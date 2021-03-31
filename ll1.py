@@ -33,25 +33,42 @@ def buildSet(builder):
 
 
 def getProductionsForSymbol(symbol):
-    pass
+    productionsForSymbol = {}
+    for k in index.grammar:
+        if index.grammar[k][0] == symbol:
+            productionsForSymbol[k] = index.grammar[k]
+
+    return productionsForSymbol
 
 
 def getLHS(production):
-    # return production.split('->')[0].replace(/\s+/g, '')
-    pass
+    prod = []
+
+    for i in range(production):
+        if(production[i] == '-'):
+            break
+        prod.append(production[i])
+
+    return prod
 
 
 def getRHS(production):
-    # return production.split('->')[1].replace(/\s+/g, '');
-    pass
+    prod = []
+    ban = False
+    for i in range(production):
+        if(ban):
+            prod.append(production[i])
+        else:
+            if(production[i] == '>'):
+                ban = True
+    return prod
 
 
 def merge(first, firstOfNonTerminal):
     pass
 
 
-def productionsForSymbol(args):
-    pass
+    
 
 
 def firstOf(symbol):
@@ -65,9 +82,10 @@ def firstOf(symbol):
     if (isTerminal(symbol)):
         first[symbol] = True
         return index.firstSets[symbol]
+    productionsForSymbol = getProductionsForSymbol(symbol)
+    for k in productionsForSymbol:
 
-    for k in getProductionsForSymbol(symbol):
-        getRHS(productionsForSymbol[k])
+        production = getRHS(productionsForSymbol[k])
 
         for i in range(len(production)):
             productionSymbol = production[i]
@@ -87,7 +105,7 @@ def firstOf(symbol):
             # - merge all except for epsilon
             # - eliminate this non-terminal and advance to the next symbol
             # (i.e. don't break this loop)
-            merge(first, firstOfNonTerminal, [index.EPSILON]);
+            merge(first, firstOfNonTerminal, [index.EPSILON])
             # don't break, go to the next `productionSymbol`.
 
-    return first;
+    return first

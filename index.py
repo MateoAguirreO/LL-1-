@@ -22,13 +22,13 @@ nonTerminals = []
 
 
 def startUp(grammar):
-    
+
     ll1.buildFirstSets(grammar)
     ll1.buildFollowSets(grammar)
     printSet('First sets', firstSets)
     printSet('Follow sets', followSets)
     ll1.buildNonTerminals(grammar)
     ll1.buildTerminals(grammar)
-   
+
 def printSet(type, sets ):
     pass

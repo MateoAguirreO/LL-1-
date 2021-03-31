@@ -22,7 +22,7 @@ nonTerminals = []
 
 
 def startUp(grammar):
-    ll1.printGrammar(grammar)
+    
     ll1.buildFirstSets(grammar)
     ll1.buildFollowSets(grammar)
     printSet('First sets', firstSets)

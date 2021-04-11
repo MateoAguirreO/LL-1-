@@ -1,4 +1,4 @@
-import LL1
+import ll1
 
 grammar = {
     1: 'S -> TX',
@@ -11,7 +11,7 @@ grammar = {
 
 OPERATOR_SYMBOL = '|'
 EPSILON = "ε"
-
+first_symbol = ''
 firstSets = {}
 followSets = {}
 productions = []
@@ -29,18 +29,11 @@ def startUp():
     # ll1.buildTerminals(grammar)
     # this.nonTerminals = buildNoTerminals()
     splitingGrammar()
-    buildNoTerminals(splitGrammar)
+    first_symbol = buildNoTerminals(splitGrammar)
     buildProductions(splitGrammar)
     buildTerminals()
-    LL1.firstOf(splitGrammar, terminals, nonTerminals)
-
-def cleanNoTerminals():
-    for i in nonTerminals:
-        if i not in cleanNonTerminals:
-            cleanNonTerminals.append(i)
-    print("No Terminales")
-    print(cleanNonTerminals)
-
+    ll1.firstOf(splitGrammar, terminals, nonTerminals, OPERATOR_SYMBOL)
+    ll1.nextOf(splitGrammar, terminals, nonTerminals, OPERATOR_SYMBOL, first_symbol)
 
 def splitingGrammar():
     for value in grammar.values():
@@ -53,8 +46,12 @@ def buildNoTerminals(split):
     for k in split:
         nonTerminals.append(split[cont][0].replace(' ', ''))
         cont = cont + 1
+    first_symbol = nonTerminals[0]
+    print("Primer simbolo")
+    print(first_symbol)
     print("No Terminales")
     print(nonTerminals)
+    return first_symbol
 
 def buildProductions(split):
     cont = 0

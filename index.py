@@ -1,12 +1,15 @@
 import ll1
 
 grammar = {
-    1: 'S -> TX',
-    2: 'X -> +TX | ε',
-    3: 'T -> FY',
-    4: 'Y -> *FY | ε',
-    5: 'F -> (S) | a'
+    1: 'S -> QA',
+    2: 'A -> oQA | ε',
+    3: 'Q -> RB',
+    4: 'B -> RB | ε ',
+    5: 'R -> F a | x | y',
+    6: 'F -> z'
 }
+
+
 # print(grammar)
 
 OPERATOR_SYMBOL = '|'
@@ -33,7 +36,7 @@ def startUp():
     buildProductions(splitGrammar)
     buildTerminals()
     ll1.firstOf(splitGrammar, terminals, nonTerminals, OPERATOR_SYMBOL)
-    ll1.nextOf(splitGrammar, terminals, nonTerminals, OPERATOR_SYMBOL, first_symbol)
+    ll1.nextOf(splitGrammar, terminals, nonTerminals, first_symbol, EPSILON)
 
 def splitingGrammar():
     for value in grammar.values():

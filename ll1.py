@@ -34,7 +34,7 @@ def nextOf(grammar, terminals, noTerminals, first_symbol, EPSILON):
                     try:
                         if g[0] == first_symbol and '$' not in temp:
                                 temp.append('$')
-                        if g2[1][i] == first_symbol and g2[1][i+1] in terminals:
+                        if g2[1][i] == first_symbol and g2[1][i+1] in terminals and g2[1][i+1] not in temp:
                             temp.append(g2[1][i+1])
                         if g[0] == g2[1][i] and g2[1][i+1] in terminals and g2[1][i+1] not in temp:
                             temp.append(g2[1][i+1])
@@ -52,3 +52,6 @@ def nextOf(grammar, terminals, noTerminals, first_symbol, EPSILON):
             nextSets[g[0]] = temp
             
     print(nextSets)
+
+    def predictionSet():
+        pass

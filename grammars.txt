@@ -1,0 +1,62 @@
+grammar = {
+    1: 'S -> TX',
+    2: 'X -> +TX | ε',
+    3: 'T -> FY',
+    4: 'Y -> *FY | ε',
+    5: 'F -> (S) | a'
+}
+
+grammar = {
+    1: 'S -> A B',
+    2: 'A -> a | ε',
+    3: 'B -> b C d',
+    4: 'C -> c | ε '
+}
+
+grammar = {
+    1: 'V -> i := P',
+    2: 'P -> DR',
+    3: 'R -> o DR | ε',
+    4: 'D -> CT',
+    5: 'T -> a CT | ε',
+    6: 'C -> S | u (P) ',
+    7: 'S -> (P) | O L O | t | f',
+    8: 'L -> = | <A | >B',
+    9: 'A -> = | > | ε',
+    10: 'B -> = | ε',
+    11: 'O -> i | n'
+}
+
+grammar = {
+    1: 'E -> L A | i A | o E A | a E c A',
+    2: 'A -> o E A | s E A | d E p E A | ε'
+}
+
+grammar = {
+    1: 'E -> lS | iS | o ES |  a E cS',
+    2: 'S -> AS | ε ',
+    3: 'A -> o E | s E | nE d E'
+}
+
+grammar = {
+    1: 'S -> cA',
+    2: 'A -> aB',
+    3: 'B -> b | ε'
+}
+
+grammar = {
+    1: 'B -> D L',
+    2: 'D -> i;D | ε',
+    3: 'L -> S;L | ε',
+    4: 'S -> a + a'
+}
+
+grammar = {
+    1: 'S -> A B | s',
+    2: 'A -> a S c | e B f | ε',
+    3: 'B -> b A d | ε'
+}
+
+grammar = {
+    1: 'S -> (S) S | ε'
+}
